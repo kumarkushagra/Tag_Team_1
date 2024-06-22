@@ -1,18 +1,49 @@
-# upload_Files(dir_path, CSV_Path, Anon_Flag, Batch_Size, Log_file_name):
-    # Target_UHID array = Fetch_Uhid(
-    #                               CSV_path,
-    #                               Batch_Size,
-    #                               column_name1, 
-    #                               value1, 
-    #                               column_name2,
-    #                               value2,
-    #                               id_column_name) 
-'''
-make sure to check 2 columns to shortlist the UHIDs (Uploaded & Status) 
-'''
-    # Generate Full path (For UHID_Dir) = Generate_Full_Path(Parent_Dir, Uhid_array) 
-    # Copy_to_New_Directory(Destination_Path , source_dir_array)
-    # Upload_Batches( Path_of_Destination_Path ) Anonymizes, deletes, Records CSV , Mapping
+# import requests
+from Fetch_UHID import return_uhid_array
+from Generate_Full_dir_Path import join_paths
+from Generate_Batches_Dir import create_subdirectory
+from batch_number import latest_batch_number
+from Copy_to_Batch_dir import copy_directories_to_Batch_dir
+from Upload_Entire_Batch.Upload_batch import Upload_Batch
 
 
-      
+from Upload_Entire_Batch.list_UHIDs import list_subdirectories
+from Upload_Entire_Batch.generate_series_path import generate_all_series_path
+from Upload_Entire_Batch.update_master_csv import update_csv
+from Upload_Entire_Batch.upload_each_series import upload_dicom_files
+from Upload_Entire_Batch.anonymize_given_study import anonymize_study
+from Upload_Entire_Batch.append_to_mapping_csv import append_to_csv
+from Upload_Entire_Batch.delete_study import delete_studies
+
+
+
+
+def Upload(unzip_dir,anonymize_flag, target_dir,csv_file_path,batch_size):
+    UHIDs = return_uhid_array(csv_file_path, batch_size, "LLM", 0,"Uploaded", 0, "Patient ID (UHID)")
+    # print(UHIDs)
+    batch_number = latest_batch_number()
+    batch_Name = "Batch" + str(batch_number+1)
+    # print(batch_Name)
+    # create_subdirectory(target_dir,batch_Name)
+
+    Paths_to_copy= join_paths(unzip_dir, UHIDs)
+    print(Paths_to_copy)
+
+
+    # Full path of BATCH0X i.e. just created 
+    target_dir ="Contains_Batches/Normal/ "+  batch_Name 
+
+    # Copying files from Unziped DIR to Batches
+    copy_directories_to_Batch_dir(target_dir, Paths_to_copy)
+
+
+    # Uploading Entire Batch
+    Upload_Batch(target_dir, anonymize_flag, csv_file_path,batch_Name)
+
+if __name__=="__main__":
+    csv_file_path="C:/Users/EIOT/Downloads/Final.csv"
+    batch_size=5
+    anonymize_flag= True
+    target_dir="Contains_Batches/"
+    unzip_dir="C:/Users/EIOT/Desktop/Unziped_dir"
+    Upload(unzip_dir,anonymize_flag, target_dir,csv_file_path,batch_size)
