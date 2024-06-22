@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Page</title>
+</head>
+<body>
+    <h1>Download Page</h1>
+    <form action="/download" method="post">
+        <label for="download_dir_path">Download Dir Path:</label>
+        <input type="text" id="download_dir_path" name="download_dir_path" required><br><br>
+        
+        <label for="study_ids">Study IDs (comma separated):</label>
+        <input type="text" id="study_ids" name="study_ids" required><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+    <button onclick="location.href='/'">Back to Homepage</button>
+</body>
+</html>
