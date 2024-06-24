@@ -183,6 +183,7 @@ def Upload_Batch(batch_dir_path, anonymize_flag, User_CSV_path,batch_no):
 
     # generate list containing all the UHIDs  
     uhid_array=list_subdirectories(batch_dir_path)
+    counter=0
     
     # Iterate over each UHID
     for uhid in uhid_array:
@@ -227,13 +228,14 @@ def Upload_Batch(batch_dir_path, anonymize_flag, User_CSV_path,batch_no):
             uploaded_studyID = find_new_element(old_studies,anonymized_studies)
 
         # New name for anonymized function
-        new_name = "Import Name from Master CSV"
+        new_name = "Normal_" + str(counter)
+        counter+=1
 
 
         # Renaming DONE HERE DELETE is also handeled by this function        
         final_study_id=rename_patient(uploaded_studyID[0], new_name)
 
-        append_to_csv(uhid, str(final_study_id),batch_no)
+        append_to_csv(uhid, str(final_study_id),batch_no,new_name)
 
         # Update the Master CSV
         # print(User_CSV_path)
@@ -383,7 +385,7 @@ def anonymize_study(orthanc_url, study_id):
 
 
 
-def append_to_csv(uhid, new_study_id,batch_no):
+def append_to_csv(uhid, new_study_id,batch_no,study_name):
     current_datetime = datetime.datetime.now()
 
     # Store date and time in separate variables
@@ -395,7 +397,7 @@ def append_to_csv(uhid, new_study_id,batch_no):
     csv_exists = os.path.exists(user_csv_path)
     
     # Define headers for the CSV file
-    headers = ['uhid','date','Time', 'new_study_id','batch_no']
+    headers = ['uhid','date','Time', 'new_study_id','batch_no','name_of_StudyID']
     
     # Open the CSV file in append mode
     with open('Database/mapping.csv', 'a', newline='') as csvfile:
@@ -406,7 +408,7 @@ def append_to_csv(uhid, new_study_id,batch_no):
             writer.writerow(headers)
         
         # Write the new data
-        writer.writerow([uhid,date,time, new_study_id,batch_no])
+        writer.writerow([uhid,date,time, new_study_id,batch_no,study_name])
 
 
 def delete_studies(study_ids:list):
