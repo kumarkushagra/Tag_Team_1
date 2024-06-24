@@ -4,3 +4,5 @@ functions
 pandas
 shutil
 datetime
+requests
+typing

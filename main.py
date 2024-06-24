@@ -1,8 +1,13 @@
-from fastapi import FastAPI, Form
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, Form, HTTPException
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from typing import List, Optional
-# from user_functions import process_upload, process_download, process_scp_transfer, process_reprocess
+import requests
+# from Functions.Upload.upload import Upload
+# from Functions.Download.main_download import download_studies
+# from Functions.SCP.scp import scp_transfer
+# from Functions.delete_studies.delete_studies import delete_all_studies
+from Get_studies.get_studies import get_studies
 
 app = FastAPI()
 
@@ -26,7 +31,7 @@ async def handle_upload(
     anonymization_flag: Optional[bool] = Form(False),
     batch_size: int = Form(...)
 ):
-    process_upload(dir_path, csv_path, anonymization_flag, batch_size)
+    Upload(dir_path, csv_path, anonymization_flag, batch_size)
     return {"message": "Upload data received"}
 
 @app.get("/download", response_class=HTMLResponse)
@@ -40,7 +45,7 @@ async def handle_download(
     study_ids: str = Form(...)
 ):
     study_ids_list = [id.strip() for id in study_ids.split(',')]
-    process_download(download_dir_path, study_ids_list)
+    download_studies(download_dir_path, study_ids_list)
     return {"message": "Download data received"}
 
 @app.get("/scp-transfer", response_class=HTMLResponse)
@@ -58,8 +63,11 @@ async def handle_scp_transfer(
     dest_file_path: str = Form(...),
     port: int = Form(...)
 ):
-    process_scp_transfer(source_host, source_user, source_file_path, dest_host, dest_user, dest_file_path, port)
-    return {"message": "SCP Transfer data received"}
+    try:
+        scp_transfer(source_host, source_user, source_file_path, dest_host, dest_user, dest_file_path, port)
+        return {"message": "SCP Transfer data received"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/reprocess", response_class=HTMLResponse)
 async def read_reprocess():
@@ -70,7 +78,17 @@ async def read_reprocess():
 async def handle_reprocess(
     uhid: str = Form(...)
 ):
-    process_reprocess(uhid)
+    delete_all_studies(uhid)
     return {"message": "Reprocess data received"}
+
+@app.get("/get-studies-page", response_class=HTMLResponse)
+async def read_get_studies_page():
+    with open("static/GetStudies.html") as f:
+        return HTMLResponse(content=f.read(), media_type="text/html")
+
+@app.get("/get-studies", response_class=JSONResponse)
+async def get_studies_endpoint():
+    studies = get_studies()
+    return {"studies": studies}
 
 # To run the server, use the command: uvicorn main:app --reload
