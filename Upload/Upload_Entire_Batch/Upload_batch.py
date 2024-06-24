@@ -5,6 +5,7 @@
 # Delete orignal Study only
 # Update User_CSV
 
+
 import requests
 from .list_UHIDs import list_subdirectories
 from .generate_series_path import generate_all_series_path
@@ -13,6 +14,8 @@ from .upload_each_series import upload_dicom_files
 from .anonymize_given_study import anonymize_study
 from .append_to_mapping_csv import append_to_csv
 from .delete_study import delete_studies
+from .rename_studyID import rename_patient
+from .new_study_from_array import find_new_element
 
 def Upload_Batch(batch_dir_path, anonymize_flag, User_CSV_path,batch_no):
     
@@ -26,6 +29,7 @@ def Upload_Batch(batch_dir_path, anonymize_flag, User_CSV_path,batch_no):
     for uhid in uhid_array:
         # Record all studies present before uploading
         old_studies = requests.get(f"{ORTHANC_URL}/studies").json()
+        # print(old_studies)
 
         # Store full path of all DCM instances in an array
         series_array = generate_all_series_path(batch_dir_path, uhid)
@@ -41,29 +45,44 @@ def Upload_Batch(batch_dir_path, anonymize_flag, User_CSV_path,batch_no):
                 continue
         
         # Record all Studies after uploading
+
         new_studies = requests.get(f"{ORTHANC_URL}/studies").json()
+        # print(new_studies)
 
         # Find the study_ID of new UHID i.e. just uploaded
-        new_study_id = next((study_id for study_id in new_studies if study_id not in old_studies),None)
+        uploaded_studyID = find_new_element(old_studies,new_studies)
 
+        old_studies = requests.get(f"{ORTHANC_URL}/studies").json()
         # Anonymize new_study_id if anonymize flag is true
-        if anonymize_flag:
-            anonymize_result = anonymize_study(ORTHANC_URL, new_study_id)
-        
+        # print(str(uploaded_studyID[0]))
 
+        if anonymize_flag==True:
+            anonymize_result = anonymize_study(ORTHANC_URL, str(uploaded_studyID[0]))
+            print(anonymize_result)
+        anonymized_studies = requests.get(f"{ORTHANC_URL}/studies").json()
         # Delete Orignal_study
-        delete_studies([new_study_id])
+        delete_studies(uploaded_studyID)
+        
+        # find studyID of the anonymized function
+        anonymized_studyID = find_new_element(old_studies,anonymized_studies)
 
-        # append in the mapping CSV, CSV stored in Database/sol.csv
-        append_to_csv(uhid, new_study_id,batch_no)
+        # New name for anonymized function
+        new_name = "Import Name from Master CSV"
+
+
+        # Renaming DONE HERE DELETE is also handeled by this function        
+        final_study_id=rename_patient(anonymized_studyID[0], new_name)
+
+        append_to_csv(uhid, str(final_study_id),batch_no)
 
         # Update the Master CSV
-        print(User_CSV_path)
+        # print(User_CSV_path)
+        # change value to "uploaded" == 1 
         update_csv(User_CSV_path,  uhid, 1)
 
 if __name__=="__main__":
     batch_Dir_path="C:/Users/EIOT/Desktop/Unziped_dir"
     anon_flag=True
     User_CSV_path="C:/Users/EIOT/Desktop/Final.csv"
-    batch_name=2
+    batch_name="Batch1"
     Upload_Batch(batch_Dir_path, anon_flag, User_CSV_path,batch_name)

@@ -1,0 +1,23 @@
+À
+Áàxf<„ÛDóddlZddlZdÑZedk(rdZdZdZeee´yy)ÈNcÛ‚ótjj||õdù´}tjj|´st	d|õdù´Çtj|dt
+j´5}tj|´D]π}tjj||´}tjj|´såCtj|´D]_\}}}|D]T}	tjj||	´}
+tjj|
+|´}|j|
+|´åVåaåª	ddd´td|õd|õdù´y#1swYåxYw)	a,
+    Compresses the folders inside a given directory into a ZIP file.
+
+    Args:
+    - directory_path (str): Path to the directory containing folders to be zipped.
+    - zip_path (str): Path to the output ZIP file.
+
+    Raises:
+    - FileNotFoundError: If the specified directory does not exist.
+    z.zipzThe directory 'z' does not exist.⁄wNzFolders in 'z' zipped successfully to 'z'.)⁄os⁄path⁄join⁄exists⁄FileNotFoundError⁄zipfile⁄ZipFile⁄ZIP_DEFLATED⁄listdir⁄isdir⁄walk⁄relpath⁄write⁄print)⁄directory_path⁄Name_of_ZIP_File⁄zip_path⁄zipf⁄item⁄	item_path⁄root⁄dirs⁄files⁄file⁄
+local_file⁄archive_names            ˙)d:\PROJECT\Tag_Team_1\Download\zip_dir.py⁄zip_directoryr s3ÄÙèwâwè|â|òN–/?–.@¿–,E”FÄHÙè7â7è>â>ò.‘)‹†/∞.–1A–AR– S”T–TÙ
+èâò†3¨◊(<—(<”	==¿‰óJëJò~”.Ú	=àD‹üôüô†^∞T”:àI‰èwâwè}â}òY’'‹)+Ø©∞”);Ú=—%êDò$†ÿ %Ú=ò‰%'ßW°Wß\°\∞$∏”%=ò
+‰')ßw°wß°∞z¿>”'Rò‡ü
+ô
+†:®|’<Ò=Ò=Ò		=˜=Ù
+àLò–(–(B¿8¿*»B–
+O’P˜==˙s¡7AE%√A9E%≈%E.⁄__main__zC:/Users/EIOT/Desktop/sample/z/ZIP_FILES/⁄Zip_file_Name)rr
+r ⁄__name__rrr©Ûr˙<module>r&s<€	€Ú"QJàZ“ÿ4ÄN‡ÄHÿ$–·ê.–!1’2r%

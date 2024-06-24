@@ -1,0 +1,19 @@
+Ë
+Ü×vfDãó@—ddlZddlZd„Zedk(rdZdZeee«yy)éNcóâ—d}	t|«|›d|›d}tj|«}|jdk(rqtj
+j||›d«}|jdd«}t|«t|d«5}|j|j«d	d	d	«y
+y#1swYy
+xYw#tjj$r}td|›«Yd	}~yd	}~wwxYw)af
+    Download a ZIP archive of a medical study from an Orthanc server.
+
+    Parameters:
+    - orthanc_url (str): Base URL of the Orthanc server.
+    - study_id (str): ID of the study to download.
+    - download_directory (str): Directory where the study ZIP file will be saved.
+
+    Returns:
+    - bool: True if download was successful, False otherwise.
+    zhttp://localhost:8042z	/studies/z/archiveéÈz.zipú\ú/ÚwbNTFzRequest failed: )ÚprintÚrequestsÚgetÚstatus_codeÚosÚpathÚjoinÚreplaceÚopenÚwriteÚcontentÚ
+exceptionsÚRequestException)Ústudy_idÚdownload_directoryÚorthanc_urlÚstudy_zip_urlÚresponseÚstudy_file_pathÚ
+study_fileÚes        ú4d:\PROJECT\Tag_Team_1\Download\download_study_zip.pyÚdownload_study_ziprsè€ğ(€KğäˆhŒØ&˜- y°°
+¸(ĞCˆô—<‘< Ó.ˆğ×Ñ 3Ò&ä Ÿg™gŸl™lĞ+=À(ÀÈ4Ğ?PÓQˆOØ+×3Ñ3°D¸Ó=ˆOÜ/Ô"Üo tÓ,ğ3°
+Ø× Ñ  ×!1Ñ!1Ô2÷3àğ÷3àûô×Ñ×/Ñ/òÜĞ   Ğ$Ô%Üûğús6„BB9ÂB-Â#B9Â-B6Â2B9Â6B9Â9C.ÃC)Ã)C.Ú__main__zC:/Users/EIOT/Desktop/samplez,fc357979-e1b04273-e83fd9fe-db997ff0-8b9ca1fa)r	rrÚ__name__rr©órú<module>r#s6ğÛÛ	ò%ğPˆzÒØ7ĞØ=€HáxĞ!3Õ4ğ	r"

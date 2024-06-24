@@ -1,0 +1,16 @@
+Ë
+4„xf«ãó\—ddlZddlmZddlmZd„Zedk(rdZdZe	eee««yy)	éNé)Údelete_studies)Úfind_new_elementcóÒ‡—dŠtj‰›d«j«}ˆfd„}|d|›«x}r|d}td|›«‰›d|›d}d	d
+|ii}tj‰›d«j«}tj||¬«}tj‰›d«j«}	t||	«}
+t|g«|
+Std|›«y)Nzhttp://localhost:8042z/studiescóx•—tj‰›|›«}|jdk(r|j«SdS)NéÈ)ÚrequestsÚgetÚstatus_codeÚjson)ÚendpointÚresponseÚurls  €úBd:\PROJECT\Tag_Team_1\Upload\Upload_Entire_Batch\rename_studyID.pyÚ
+fetch_jsonz"rename_patient.<locals>.fetch_jsons8ø€Ü—<‘< 3 %¨ zĞ 2Ó3ˆØ"*×"6Ñ"6¸#Ò"=ˆx}‰}‹ĞGÀ4ĞGóz	/studies/ÚParentPatientzPatient ID: z
+/patients/z/modifyÚReplaceÚPatientName)rz4No study found or error fetching data for study_id: )r	r
+rÚprintÚpostrrr)Ústudy_idÚnew_nameÚstudiesrÚ
+patient_idÚ
+update_urlÚpayloadÚols_studiesrÚnew_studiesÚrenamed_studyIDrs           @rÚrename_patientr!sø€Ø
+!€Cäl‰l˜c˜U (Ğ+Ó,×1Ñ1Ó3€GôHñ 	¨(¨Ğ4Ó5Ğ5ˆĞ5Ø˜_Ñ-ˆ
+Ü˜Z˜LĞ)Ô*àu˜J z l°'Ğ:ˆ
+àØ˜xğğ
+ˆô—l‘l c U¨(Ğ#3Ó4×9Ñ9Ó;ˆô—=‘= °'Ô:ˆô—l‘l c U¨(Ğ#3Ó4×9Ñ9Ó;ˆô+¨;°{ÓCˆô	˜zÔ"àĞô	ĞDÀXÀJĞOÕPrÚ__main__z,94a10c91-83981b79-bde64949-fd87a2f4-142a4263z	naya naam)
+r	Údelete_studyrÚnew_study_from_arrayrr!Ú__name__rrr©rrú<module>r's=ğÛİ(İ2ò(QğVˆzÒØ<€HØ€HÙ	‰.˜ 8Ó
+,Õ-ğr

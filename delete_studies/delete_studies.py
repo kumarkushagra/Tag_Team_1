@@ -35,12 +35,9 @@ def delete_all_studies(specific_study_ids=None):
 if __name__ == '__main__':
     # Example usage to delete specific studies by their Study Instance UIDs
     specific_study_ids = [
-        "710086d3-96529145-0dda5e6a-a0307fe9-89ba7e9f",
-        "f014f3ce-5413c209-14d4dfca-8f76baa2-a48b77bd",
-        "3d839efb-fa261187-403ca46e-02e50a2e-0826d569"
-    ]  # Replace with the actual Study Instance UIDs
+    ] # Replace with the actual Study Instance UIDs
 
     if not specific_study_ids:
         delete_all_studies()
     else:
-        delete_all_studies()
+        delete_all_studies(specific_study_ids)

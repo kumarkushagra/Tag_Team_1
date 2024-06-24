@@ -1,0 +1,12 @@
+Ë
+éİvföãó:—ddlZddlZd„Zedk(rdZee«yy)éNcó¬—tjj|«std|›d«‚tj|d¬«D]Œ\}}}|D]5}tjtjj||««Œ7|D]G}|jd«rŒtjtjj||««ŒIŒy)z¸
+    Deletes everything inside the specified directory except for .zip files.
+    
+    Args:
+    - directory (str): Path to the directory to clean up.
+    
+    Returns:
+    - None
+    zThe directory 'z' does not exist.F)Útopdownz.zipN)
+ÚosÚpathÚexistsÚFileNotFoundErrorÚwalkÚshutilÚrmtreeÚjoinÚendswithÚremove)Ú	directoryÚrootÚdirsÚfilesÚnames     ú7d:\PROJECT\Tag_Team_1\Download\delete_all_except_zip.pyÚdelete_except_zipsrs®€ô7‰7>‰>˜)Ô$Ü /°)°Ğ<MĞ NÓOĞOô ŸW™W Y¸Ô>ò4ÑˆˆdEàò	4ˆDÜM‰Mœ"Ÿ'™'Ÿ,™, t¨TÓ2Õ3ğ	4ğò	4ˆDØ—=‘= Õ(Ü—	‘	œ"Ÿ'™'Ÿ,™, t¨TÓ2Õ3ñ	4ñ4óÚ__main__zC:/Users/EIOT/Desktop/sample)rr
+rÚ__name__r©rrú<module>rs,ğÛ	Ûò4ğ4ˆZÒØ-€IÙyÕ!ğr

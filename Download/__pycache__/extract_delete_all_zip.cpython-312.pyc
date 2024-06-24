@@ -1,0 +1,12 @@
+Ë
+–ÙvfÊãó:—ddlZddlZd„Zedk(rdZee«yy)éNcóŠ—|jd«s|dz}tj|«}|D]‡}|jd«sŒtjj	||«}tj|d«5}|j|«ddd«tj|«td|›«Œ‰y#1swYŒ/xYw)zÎ
+    Extracts all ZIP files in the specified directory and deletes the original ZIP files.
+    
+    Args:
+    - directory (str): Path to the directory containing ZIP files.
+    
+    Returns:
+    - None
+    ú/z.zipÚrNzExtracted and deleted: )
+ÚendswithÚosÚlistdirÚpathÚjoinÚzipfileÚZipFileÚ
+extractallÚremoveÚprint)Ú	directoryÚfilesÚfileÚ	file_pathÚzip_refs     ú8d:\PROJECT\Tag_Team_1\Download\extract_delete_all_zip.pyÚExtract_Delete_all_zipsrs°€ğ×Ñ˜cÔ"ØSÑˆ	ôJ‰JyÓ!€Eğò9ˆØ=‰=˜Õ äŸ™Ÿ™ Y°Ó5ˆIô—‘ ¨CÓ0ğ.°GØ×"Ñ" 9Ô-÷.ôI‰IiÔ ÜĞ+¨I¨;Ğ7Õ8ñ9÷.ğ.úsÁ9B9Â9C	Ú__main__zC:/Users/EIOT/Desktop/sample)rrrÚ__name__Údownload_directory©órú<module>rs.ğÛ	Ûò9ğ>ˆZÒØ5ĞÙĞ.Õ/ğr
