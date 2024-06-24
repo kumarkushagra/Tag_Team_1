@@ -31,7 +31,7 @@ def delete_all_studies(specific_study_ids=None):
     
     except requests.exceptions.RequestException as e:
         print(f'An error occurred: {e}')
-
+        
 if __name__ == '__main__':
     # Example usage to delete specific studies by their Study Instance UIDs
     specific_study_ids = [

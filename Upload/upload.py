@@ -218,19 +218,20 @@ def Upload_Batch(batch_dir_path, anonymize_flag, User_CSV_path,batch_no):
         if anonymize_flag==True:
             anonymize_result = anonymize_study(ORTHANC_URL, str(uploaded_studyID[0]))
             print(anonymize_result)
-        anonymized_studies = requests.get(f"{ORTHANC_URL}/studies").json()
-        # Delete Orignal_study
-        delete_studies(uploaded_studyID)
+            anonymized_studies = requests.get(f"{ORTHANC_URL}/studies").json()
+            # Delete Orignal_study
+            delete_studies(uploaded_studyID)
         
         # find studyID of the anonymized function
-        anonymized_studyID = find_new_element(old_studies,anonymized_studies)
+        
+            uploaded_studyID = find_new_element(old_studies,anonymized_studies)
 
         # New name for anonymized function
         new_name = "Import Name from Master CSV"
 
 
         # Renaming DONE HERE DELETE is also handeled by this function        
-        final_study_id=rename_patient(anonymized_studyID[0], new_name)
+        final_study_id=rename_patient(uploaded_studyID[0], new_name)
 
         append_to_csv(uhid, str(final_study_id),batch_no)
 
