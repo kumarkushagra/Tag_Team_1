@@ -1,17 +1,19 @@
-from fastapi import FastAPI, Form, HTTPException
+from fastapi import FastAPI, Form, File, UploadFile, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from typing import List, Optional
+import shutil
+import os
 import requests
+import pandas as pd
 
-from Upload.upload import Upload
+from Upload.upload import *
 # from Download.main_download import download_studies
 # from scp import scp_transfer
 from delete_studies.delete_studies import delete_all_studies
 from Get_studies.get_studies import get_studies
-from .Upload.Generate_Full_dir_Path import join_paths
 
-import os
+
 
 
 app = FastAPI()
@@ -32,13 +34,20 @@ async def read_upload():
 @app.post("/upload")
 async def handle_upload(
     dir_path: str = Form(...),
-    csv_path: str = Form(...),
+    target_dir: str = Form(...),
+    csv_file: UploadFile = File(...),
     anonymization_flag: Optional[bool] = Form(False),
     batch_size: int = Form(...)
-):
-    print(f"Received upload data: dir_path={dir_path}, csv_path={csv_path}, anonymization_flag={anonymization_flag}, batch_size={batch_size}")
-    return {"message": "Upload data received"}
+):    
+    csv_path = f"temp_{csv_file.filename}"
 
+    with open(csv_path, "wb") as buffer:
+        shutil.copyfileobj(csv_file.file, buffer)
+
+    await Upload(dir_path, anonymization_flag, target_dir, csv_path, batch_size)
+    return "DONE"
+    
+        
 @app.get("/download", response_class=HTMLResponse)
 async def read_download():
     with open("static/Download.html") as f:

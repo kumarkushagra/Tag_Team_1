@@ -1,6 +1,6 @@
 import os
 import shutil
-from Generate_Full_dir_Path import join_paths
+
 def copy_directories_to_Batch_dir(target_dir, directory_paths_array):
     """
     Copies directories specified in directory_paths to the target directory.
