@@ -1,20 +1,21 @@
 # import requests
-from Fetch_UHID import return_uhid_array
-from Generate_Full_dir_Path import join_paths
-from Generate_Batches_Dir import create_subdirectory
-from batch_number import latest_batch_number
-from Copy_to_Batch_dir import copy_directories_to_Batch_dir
-from Upload_Entire_Batch.Upload_batch import Upload_Batch
+from .Fetch_UHID import return_uhid_array
+# from Generate_Full_dir_Path import join_paths
+from .Generate_Full_dir_Path import join_paths
+from .Generate_Batches_Dir import create_subdirectory
+from .batch_number import latest_batch_number
+from .Copy_to_Batch_dir import copy_directories_to_Batch_dir
+from .Upload_Entire_Batch.Upload_batch import Upload_Batch
 import os
 
-from Upload_Entire_Batch.list_UHIDs import list_subdirectories 
-from Upload_Entire_Batch.generate_series_path import generate_all_series_path
-from Upload_Entire_Batch.update_master_csv import update_csv
-from Upload_Entire_Batch.upload_each_series import upload_dicom_files
-from Upload_Entire_Batch.anonymize_given_study import anonymize_study
-from Upload_Entire_Batch.append_to_mapping_csv import append_to_csv
-from Upload_Entire_Batch.delete_study import delete_studies
-from Upload_Entire_Batch.rename_studyID import rename_patient
+from .Upload_Entire_Batch.list_UHIDs import list_subdirectories 
+from .Upload_Entire_Batch.generate_series_path import generate_all_series_path
+from .Upload_Entire_Batch.update_master_csv import update_csv
+from .Upload_Entire_Batch.upload_each_series import upload_dicom_files
+from .Upload_Entire_Batch.anonymize_given_study import anonymize_study
+from .Upload_Entire_Batch.append_to_mapping_csv import append_to_csv
+from .Upload_Entire_Batch.delete_study import delete_studies
+from .Upload_Entire_Batch.rename_studyID import rename_patient
 
 
 
